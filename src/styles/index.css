@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-canvas: #090b0e;
+    --bg-surface: #0f1319;
+    --bg-surface-elevated: #161b24;
+    --bg-glass: rgba(15, 19, 25, 0.78);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-medium: rgba(255, 255, 255, 0.16);
+    --border-accent: rgba(200, 241, 53, 0.35);
+
+    --accent-lime: #c8f135;
+    --accent-lime-muted: rgba(200, 241, 53, 0.12);
+    --accent-orange: #ff5f1f;
+    --accent-orange-muted: rgba(255, 95, 31, 0.12);
+    --accent-cyan: #38bdf8;
+    --accent-cyan-muted: rgba(56, 189, 248, 0.12);
+    --accent-purple: #a855f7;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --text-accent: #c8f135;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-canvas);
+    background-image: 
+      radial-gradient(rgba(200, 241, 53, 0.04) 1px, transparent 1px),
+      radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 32px 32px, 16px 16px;
+    background-position: 0 0, 8px 8px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #090b0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2633;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Monospace text */
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+}
+
+/* Display text */
+.font-display {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Subtle glow effects */
+.glow-lime {
+  box-shadow: 0 0 25px rgba(200, 241, 53, 0.15);
+}
+.glow-orange {
+  box-shadow: 0 0 25px rgba(255, 95, 31, 0.15);
+}
+.glow-cyan {
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(15, 19, 25, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(22, 27, 36, 0.9);
+  border-color: rgba(200, 241, 53, 0.28);
+  transform: translateY(-2px);
+}
+
+/* Subtle engineering grid accent line */
+.border-gradient-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 241, 53, 0.3), rgba(255, 95, 31, 0.3), transparent);
+}
+
+/* Keyframe animations */
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(0.97); }
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 3s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
