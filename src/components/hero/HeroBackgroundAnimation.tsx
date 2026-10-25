@@ -145,3 +145,4 @@ export const HeroBackgroundAnimation: React.FC = () => {
     </div>
   );
 };
+

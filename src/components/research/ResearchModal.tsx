@@ -165,3 +165,4 @@ export const ResearchModal: React.FC<ResearchModalProps> = ({ paper, onClose }) 
     </div>
   );
 };
+

@@ -131,3 +131,4 @@ export const SectionTabs: React.FC<SectionTabsProps> = ({ activeTab, onTabChange
     </div>
   );
 };
+

@@ -35,14 +35,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume, onSelectTab }) => {
             </span>
           </div>
 
-          {/* Name Heading with dynamic multi-color gradient hover */}
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#f5f5f0] leading-[1.06] mb-3 group cursor-default transition-all">
-            <span className="group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-[#38bdf8] group-hover:to-[#d4ff33] transition-all duration-300">
-              Yogesh
-            </span>{' '}
-            <span className="text-[#d4ff33] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#d4ff33] group-hover:via-[#ff7849] group-hover:to-[#38bdf8] transition-all duration-300">
-              R. Mehta
-            </span>
+          {/* Name Heading */}
+          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#f5f5f0] leading-[1.06] mb-3 cursor-default">
+            <span>Yogesh</span>{' '}
+            <span className="text-[#d4ff33]">R. Mehta</span>
           </h1>
 
           {/* Role Headline with colorful hover */}
