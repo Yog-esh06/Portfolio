@@ -12,16 +12,16 @@ export const experienceData: ExperienceItem[] = [
     highlights: [
       "Worked in Audit & Assurance on Controls Assurance workflows, evaluating IT General Controls (ITGC), change management validation, system access integrity, and audit trail reliability across enterprise business software.",
       "Completed over 150 hours of intensive enterprise professional development covering practical AI integration, predictive data science, and automated IT audit controls.",
-      "Earned 6 employee-exclusive Level-3 and specialist skill badges through Deloitte's internal learning ecosystem (completing extensive Udemy and LinkedIn Learning coursework followed by internal assessment exams).",
+      "Earned 6 employee-exclusive skill badges through Deloitte's internal learning ecosystem (completing comprehensive coursework followed by internal assessment benchmarks).",
       "Collaborated with audit engagement team members to examine automated system control evidence and compliance documentation following professional risk assessment guidelines."
     ],
     badges: [
-      "Deloitte AI Expert — Level 3 (Internal Assessment)",
-      "Deloitte AI Generalist — Level 3 (Internal Assessment)",
-      "Deloitte AI Market Specialist — Level 3 (Internal Assessment)",
-      "Deloitte AI Market Leader — Level 3 (Internal Assessment)",
-      "Deloitte Data Science Specialist (Internal Assessment)",
-      "Deloitte Data Analytics Specialist (Internal Assessment)",
+      "AI Expert – Level 3 (Deloitte Internal Badge)",
+      "AI Generalist – Level 3 (Deloitte Internal Badge)",
+      "AI Market Specialist – Level 3 (Deloitte Internal Badge)",
+      "AI Market Leader – Level 3 (Deloitte Internal Badge)",
+      "Data Science (Deloitte Internal Badge)",
+      "Data Analytics (Deloitte Internal Badge)",
       "IT Compliance Training (Deloitte)"
     ],
     skills: ["Controls Assurance", "ITGC Compliance", "Enterprise AI", "Data Analytics", "Audit Automation", "Enterprise Risk"]

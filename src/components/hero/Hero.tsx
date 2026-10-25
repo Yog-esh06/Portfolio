@@ -2,7 +2,7 @@ import React from 'react';
 import { profileData } from '../../data/profile';
 import { HeroVisualizer } from './HeroVisualizer';
 import { GithubIcon, LinkedinIcon } from '../common/Icons';
-import { ArrowDown, FileText, ChevronRight, Download, Trophy, ShieldCheck, Activity } from 'lucide-react';
+import { ArrowDown, FileText, ChevronRight, Download, Trophy, Briefcase, Activity } from 'lucide-react';
 
 interface HeroProps {
   onOpenResume: () => void;
@@ -165,7 +165,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             >
               <div className="flex items-center justify-between mb-1.5">
                 <span className="font-mono text-[11px] text-[#d4ff33] font-semibold flex items-center gap-1.5">
-                  <ShieldCheck size={13} /> CONTROLS ASSURANCE
+                  <Briefcase size={13} /> CONTROLS ASSURANCE
                 </span>
                 <ChevronRight size={13} className="text-white/30 group-hover:text-white/80 group-hover:translate-x-0.5 transition-all" />
               </div>

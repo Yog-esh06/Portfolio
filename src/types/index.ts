@@ -54,7 +54,9 @@ export interface ResearchPaper {
   }[];
   tags: string[];
   repoUrl?: string;
-  status: 'Presented' | 'Completed Research';
+  manuscriptStatus?: string;
+  disclaimer?: string;
+  status: 'Presented' | 'Completed Research' | 'Research Prototype';
 }
 
 export interface ExperienceItem {
@@ -80,7 +82,6 @@ export interface AchievementItem {
   projectUrl?: string;
   description: string;
   year: string;
-  evidence: string;
   badgeType: 'finalist' | 'winner' | 'presentation';
 }
 
@@ -90,7 +91,6 @@ export interface CertificateItem {
   issuer: string;
   category: 'AI & ML' | 'Data & Analytics' | 'Deloitte Exclusive' | 'Hackathons & Awards' | 'NPTEL' | 'Job Simulations' | 'Systems & Dev';
   year?: string;
-  verified: boolean;
   description?: string;
   credentialUrl?: string;
 }

@@ -5,13 +5,13 @@ export const achievementsData: AchievementItem[] = [
     id: "rehab-tech-challenge-winner",
     title: "Rehab Tech Challenge — 1st Place Winner",
     competition: "Rehab Tech Challenge (Med-Tech Hackathon, SRM IST)",
-    ranking: "Winner",
+    ranking: "1st Place Winner",
     scale: "Inter-collegiate Med-Tech Teams",
     associatedProject: "Neuro-Move — Computer Vision Rehabilitation Platform",
+    projectUrl: "https://github.com/Yatharthg12/Neuro-Move",
     year: "Semester 4 (2025)",
     badgeType: "winner",
-    description: "Won 1st Place with Team Kynex for Neuro-Move, a camera-based rehabilitation assessment system. The software uses real-time computer vision and pose tracking to evaluate physiotherapy movements, compute joint velocity, and score exercise form without requiring wearable sensors or external hardware.",
-    evidence: "Award certificate on record: 1st Place-Rehab Tech Challenge (Sem-4).pdf."
+    description: "Won 1st Place with Team Kynex for Neuro-Move, a camera-based rehabilitation assessment system. The software uses real-time computer vision and pose tracking to evaluate physiotherapy movements, compute joint velocity, and score exercise form without requiring wearable sensors or external hardware."
   },
   {
     id: "industry-games-finalist",
@@ -23,20 +23,18 @@ export const achievementsData: AchievementItem[] = [
     projectUrl: "https://github.com/Yog05esh/STRATA",
     year: "Semester 5 (2026)",
     badgeType: "finalist",
-    description: "Reached the Top 8 Finalist standing out of more than 300 participants with STRATA. Built an autonomous operational intelligence engine that continuously monitors business metrics, uses Sentinel algorithms for variance detection, dispatches cited multi-agent root cause investigations, and gates remediations through human approval.",
-    evidence: "Competition certificate on record: THE INDUSTRY GAMES (sem-5).pdf."
+    description: "Placed as a Top 8 Finalist out of more than 300 participants with STRATA. Built an autonomous operational intelligence engine that continuously monitors business metrics, uses Sentinel algorithms for variance detection, dispatches cited multi-agent root cause investigations, and gates remediations through human approval."
   },
   {
     id: "srm-research-day-presenter",
     title: "SRM Research Day 2026 — Research Presenter",
     competition: "SRM Research Day 2026 (University Research Symposium)",
     ranking: "Paper Presentation",
-    scale: "Peer-Reviewed Undergraduate Research",
+    scale: "Undergraduate Research Symposium",
     associatedProject: "Cloud Virtual Machine Fault Detection Framework",
     year: "2026",
     badgeType: "presentation",
-    description: "Selected to present co-authored research paper 'A Lightweight Fault Detection Framework for Cloud Virtual Machines Using System-Level Metrics' with Yatharth Garg, demonstrating passive hypervisor performance counter telemetry for early VM failure detection.",
-    evidence: "Presentation certificate on record: SRM RESEARCH DAY 2026.pdf."
+    description: "Selected to present co-authored research paper 'A Lightweight Fault Detection Framework for Cloud Virtual Machines Using System-Level Metrics' with Yatharth Garg, demonstrating passive hypervisor performance counter telemetry for early VM failure detection."
   },
   {
     id: "hackathon-portfolio",
@@ -47,7 +45,6 @@ export const achievementsData: AchievementItem[] = [
     associatedProject: "Full-Stack, Vision, and AI Prototypes",
     year: "2024 – 2026",
     badgeType: "finalist",
-    description: "Active hackathon competitor across 10+ competitions including Adobe University Hackathon, Hack4Health, Hybrid Hack, EY Techathon 6.0, CeraTech 2026, Devtrails, Ultron 9.0, Ossome Hacks 3.0, CodeMaeven, and Heisen Hack 2025.",
-    evidence: "Records available in Certificates/Hackathons folder."
+    description: "Active hackathon competitor across 10+ competitions including Adobe University Hackathon, Hack4Health, Hybrid Hack, EY Techathon 6.0, CeraTech 2026, Devtrails, Ultron 9.0, Ossome Hacks 3.0, CodeMaeven, and Heisen Hack 2025."
   }
 ];

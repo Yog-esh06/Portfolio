@@ -9,14 +9,15 @@ export const researchData: ResearchPaper[] = [
     year: 2026,
     collaborators: ["Yogesh R. Mehta", "Yatharth Garg"],
     status: "Presented",
-    abstract: "Modern cloud hypervisors host thousands of co-located virtual machines subject to transient hardware faults, noisy neighbors, and hypervisor resource starvation. Existing detection approaches either require heavyweight in-guest agents that consume prohibitive CPU overhead or rely solely on coarse hypervisor heartbeats that fail to detect silent degradations. This paper introduces an unobtrusive telemetry pipeline that samples lightweight hypervisor performance counters and system-level metrics, processing temporal anomalies through optimized tree ensembles to flag impending VM failures before service disruption occurs.",
-    problem: "Silent degradation and transient faults in virtual machines cause cascading service failures in multi-tenant cloud clusters. Traditional deep monitoring solutions impose noticeable virtualization overhead (>5-8% CPU penalty), rendering them impractical for density-sensitive cloud providers.",
-    methodology: "We designed a passive collection daemon gathering host-level hardware performance counters (cache miss frequency, context switch rates, vCPU run-queue latency) and system I/O distributions without guest instrumentation. Feature vectors are normalized into rolling temporal windows and evaluated against trained XGBoost and isolation forest estimators configured for minimal inference latency.",
+    abstract: "Modern cloud hypervisors host co-located virtual machines subject to transient hardware faults, noisy neighbors, and resource contention. Traditional detection mechanisms rely either on heavy in-guest telemetry that incurs non-trivial virtualization overhead or on coarse hypervisor heartbeats that miss silent performance degradation. We evaluate an unobtrusive collection daemon that samples lightweight host-level performance counters and system I/O distributions without guest instrumentation, evaluating temporal anomaly vectors with tree ensembles for rapid warning before VM service interruption.",
+    problem: "Silent degradation and transient faults in virtual machines cause cascading service failures in multi-tenant cloud clusters. In-guest instrumentation imposes measurable CPU penalties (>5-8%), which multi-tenant cloud providers avoid in production density environments.",
+    methodology: "A passive collection daemon samples host-level hardware performance counters (cache miss frequency, context switch rates, vCPU run-queue latency) and system I/O distributions without guest instrumentation. Feature vectors are normalized across rolling temporal windows and evaluated against trained XGBoost and isolation forest estimators tuned for low inference latency.",
     results: [
-      { metric: "Inference Latency", value: "< 1.8 ms", comparison: "Negligible CPU overhead (<0.4%)" },
-      { metric: "Detection Rate", value: "94.2%", comparison: "Across CPU/IO starvation faults" },
-      { metric: "Lead Time", value: "3.5 min", comparison: "Advance warning prior to crash" }
+      { metric: "Inference Latency", value: "< 1.8 ms", comparison: "Negligible host CPU overhead (<0.4%)" },
+      { metric: "Detection Rate", value: "94.2%", comparison: "Evaluated across CPU/IO starvation faults" },
+      { metric: "Lead Time", value: "3.5 min", comparison: "Advance warning prior to crash state" }
     ],
+    manuscriptStatus: "Presented at SRM Research Day 2026",
     tags: ["Cloud Infrastructure", "Fault Detection", "System Telemetry", "Virtual Machines", "Anomaly Detection"]
   },
   {
@@ -27,34 +28,37 @@ export const researchData: ResearchPaper[] = [
     year: 2025,
     collaborators: ["Yogesh R. Mehta", "Shreyas Gupta"],
     status: "Completed Research",
-    abstract: "Speech Emotion Recognition (SER) remains challenging due to the high variability of acoustic signals and the intricate interplay between static spectral envelopes and dynamic prosody. In this study, we conduct a systematic feature ablation study comparing two primary acoustic representations evaluated on a 4-block deep Convolutional Neural Network architecture with batch normalization and dropout regularization over the RAVDESS dataset. We prove that coupling 40 Mel-Frequency Cepstral Coefficients with their first and second temporal derivatives (MFCC + Delta + Delta-Delta) decisively outperforms standard combinations of MFCC with fundamental pitch frequency (F0) and RMS energy.",
-    problem: "Classifying human emotional state from raw speech audio often conflates static speaker timbre with dynamic emotional expression, resulting in poor generalizability across distinct acoustic environments and emotion categories.",
-    methodology: "A 4-block 2D CNN architecture was trained over the stratified RAVDESS corpus (2,068 samples, 24 professional actors, 6 emotion categories: angry, calm, fearful, happy, neutral, sad). Training data was quadrupled using domain-specific audio data augmentation (Gaussian noise injection, time-stretching, and pitch-shifting). Two distinct feature matrix configurations were tested under identical Adam optimization and early stopping policies.",
+    abstract: "Speech Emotion Recognition (SER) remains challenging due to acoustic variability and the complex relationship between static spectral envelopes and dynamic prosody. In this study, we conduct an experimental ablation study comparing two primary acoustic representations evaluated on a 4-block deep 2D Convolutional Neural Network with batch normalization and dropout over the RAVDESS corpus. Results show that coupling 40 Mel-Frequency Cepstral Coefficients with their first and second temporal derivatives (MFCC + Delta + Delta-Delta) outperforms standard combinations of MFCC with fundamental pitch frequency (F0) and RMS energy.",
+    problem: "Classifying human emotional state from raw speech audio often conflates static speaker timbre with dynamic emotional expression, degrading generalization across speaker identities and recording environments.",
+    methodology: "A 4-block 2D CNN architecture was trained over the stratified RAVDESS corpus (2,068 samples, 24 professional actors, 6 emotion categories). Training data was augmented with Gaussian noise injection, time-stretching, and pitch-shifting. Two distinct feature matrix configurations were tested under identical Adam optimization and early stopping policies.",
     results: [
       { metric: "MFCC + Delta + Delta-Delta", value: "92.78%", comparison: "Top Test Accuracy (Dynamic Spectral)" },
       { metric: "MFCC + Pitch + Energy", value: "89.94%", comparison: "Baseline Combination (Ablated)" },
       { metric: "Relative Gain", value: "+2.84%", comparison: "Temporal derivatives capture emotional transitions" }
     ],
     repoUrl: "https://github.com/Yog-esh06/Emotional-Classification-using-Audio-Data",
+    manuscriptStatus: "Open-Source Code & UROP Project",
     tags: ["Speech Emotion Recognition", "CNN", "Acoustics", "Audio Processing", "RAVDESS", "MFCC"]
   },
   {
-    id: "student-performance-prediction",
-    title: "Cost-Sensitive Risk Classification, Uncertainty Quantification & Explainable AI for Student Academic Performance Prediction",
-    track: "Educational Data Mining & Decision Support",
-    venue: "SRM Institute of Science and Technology (Research Project)",
-    year: 2025,
-    collaborators: ["Yogesh R. Mehta", "Bhavy Manchanda", "Darsh M. Saraf", "Bhavish Akula (Mentored by Dr. V. Angayarkanni)"],
-    status: "Completed Research",
-    abstract: "Educational machine learning models frequently suffer from significant costs associated with false negatives—failing to identify at-risk students before irreversible academic failure occurs. Furthermore, standard black-box regressors provide no actionable attribution to guide pedagogical interventions. We formulated a comprehensive decision-support framework incorporating an asymmetric cost-sensitive loss matrix in XGBoost to strictly penalize false negatives, temporal progression feature synthesis (Early Engagement, Midterm Consistency, Late Fatigue), Shannon entropy uncertainty quantification, and SHAP explainability.",
-    problem: "Standard educational forecasters fail because student performance datasets have natural class imbalances, and conventional symmetric loss functions treat false alarms and missed failing students with equal weight, resulting in missed intervention windows.",
-    methodology: "We engineered temporal phase transitions from cross-sectional academic indicators and addressed class imbalance via SMOTE. An asymmetric cost matrix penalizes false negatives 5x higher than false positives. Shannon entropy is calculated over class probabilities; predictions with entropy exceeding 0.85 are automatically flagged for mandatory human educator review. SHAP values decode model feature attribution for customized student advising.",
+    id: "data-center-thermal-digital-twin",
+    title: "A Machine Learning-Enhanced Digital Twin for Predictive Thermal Management and Energy Optimization in Data Centers",
+    track: "Digital Twins & Sustainable Computing",
+    venue: "Software Research Prototype & Simulation Study",
+    year: 2026,
+    collaborators: ["Yogesh R. Mehta"],
+    status: "Research Prototype",
+    abstract: "Data center thermal management must balance strict hardware thermal safety margins against cooling power consumption. This study formulates a software-based digital-twin prototype that combines an eight-rack resistance-capacitance (RC) thermal model, sensor observation handling with noise and missingness, multi-horizon machine-learning forecasting, and a counterfactual predictive decision engine. Seven forecasting pipelines (including persistence, physics baselines, linear, tree ensembles, PyTorch GRU, and physics-plus-residual hybrids) and four control policies are evaluated across simulated operational scenarios.",
+    problem: "Server density in modern computing facilities creates localized thermal hotspots and cooling inefficiencies, while live control experimentation on physical server racks is risk-prohibitive without validated digital surrogates.",
+    methodology: "Implemented a configurable multi-rack, three-zone thermal simulation with Runge-Kutta (RK4) integration, recirculation modeling, and inter-rack thermal coupling. Synthetic sensor observations incorporate noise, dropped frames, and causal estimation. Tested MPC-style predictive control with cooling adjustments and workload migration candidate actions.",
     results: [
-      { metric: "False Negative Reduction", value: "78%", comparison: "Prioritizes early intervention" },
-      { metric: "Uncertainty Threshold", value: "Entropy > 0.85", comparison: "Triggers human educator review" },
-      { metric: "Explainability Engine", value: "SHAP XAI", comparison: "Local & global feature impacts" }
+      { metric: "Simulation Plant", value: "8-Rack RC Model", comparison: "RK4 integration with inter-rack coupling" },
+      { metric: "Forecasting", value: "Multi-Horizon", comparison: "Physics + PyTorch GRU residual hybrid" },
+      { metric: "Validation Note", value: "Simulation Only", comparison: "Not tested on physical data-center hardware" }
     ],
-    repoUrl: "https://github.com/Yog-esh06/Student-Academic-Performance-Prediction",
-    tags: ["Educational Data Mining", "Cost-Sensitive Learning", "Explainable AI", "SHAP", "Uncertainty Quantification", "XGBoost"]
+    disclaimer: "Software-simulated research surrogate evaluated under synthetic operational conditions. Reported performance and energy findings are illustrative simulation results and have explicitly not been validated on physical data-center hardware.",
+    repoUrl: "https://github.com/Yog-esh06/Thermal-Management-and-Energy-Optimization-in-Data-Centers/tree/main",
+    manuscriptStatus: "Repository Available; Manuscript in Preparation",
+    tags: ["Digital Twin", "Data Center Cooling", "Predictive Control", "Thermal Modeling", "Simulation", "PyTorch"]
   }
 ];

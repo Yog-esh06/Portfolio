@@ -97,12 +97,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
               <li><a href="#library" className="hover:text-[#d4ff33] transition-colors">03. Repository Archive</a></li>
               <li><a href="#research" className="hover:text-[#d4ff33] transition-colors">04. Systems Research</a></li>
               <li><a href="#experience" className="hover:text-[#d4ff33] transition-colors">05. Deloitte Experience</a></li>
-              <li><a href="#certificates" className="hover:text-[#d4ff33] transition-colors">06. 72 Credentials</a></li>
+              <li><a href="#certificates" className="hover:text-[#d4ff33] transition-colors">06. Credentials</a></li>
               <li><a href="#updates" className="hover:text-[#d4ff33] transition-colors">07. LinkedIn Updates</a></li>
             </ul>
           </div>
 
-          {/* Verified Deployments */}
+          {/* Live Deployments */}
           <div>
             <h4 className="font-mono text-xs uppercase tracking-wider text-white font-semibold mb-3">
               Live Deployments

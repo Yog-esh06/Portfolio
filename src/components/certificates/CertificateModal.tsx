@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { CertificateItem } from '../../types';
 import { Badge } from '../common/Badge';
-import { X, Building, CheckCircle2 } from 'lucide-react';
+import { X, Building, ExternalLink } from 'lucide-react';
 
 interface CertificateModalProps {
   cert: CertificateItem | null;
@@ -71,19 +71,27 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ cert, onClos
 
         <div className="space-y-2.5 pt-4 border-t border-white/10 text-xs font-mono text-white/60">
           <div className="flex items-center justify-between">
-            <span className="text-white/40">Credential Status:</span>
-            <span className="text-[#d4ff33] flex items-center gap-1 font-semibold">
-              <CheckCircle2 size={13} /> Verified in Local Baseline
-            </span>
+            <span className="text-white/40">Category:</span>
+            <span className="text-white/80">{cert.category}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-white/40">Storage Baseline:</span>
-            <span className="text-white/80">E:\Desktop\Projects\Portfolio\Certificates</span>
+            <span className="text-white/40">Issuing Organization:</span>
+            <span className="text-white/80">{cert.issuer}</span>
           </div>
-          <div className="flex items-center justify-between">
-            <span className="text-white/40">Audit Record:</span>
-            <span className="text-white/80">certificates_manifest.json</span>
-          </div>
+          {cert.credentialUrl && (
+            <div className="flex items-center justify-between pt-2">
+              <span className="text-white/40">Credential Link:</span>
+              <a
+                href={cert.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#38bdf8] hover:underline flex items-center gap-1 font-semibold"
+              >
+                <span>View Online Credential</span>
+                <ExternalLink size={12} />
+              </a>
+            </div>
+          )}
         </div>
 
         <div className="mt-6 flex justify-end">
@@ -98,4 +106,3 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({ cert, onClos
     </div>
   );
 };
-

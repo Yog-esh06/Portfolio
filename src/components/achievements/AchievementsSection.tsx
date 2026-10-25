@@ -12,7 +12,7 @@ export const AchievementsSection: React.FC = () => {
         <SectionHeading
           number="// 02. COMPETITION & RESEARCH MILESTONES"
           title="Hackathon Results & Achievements"
-          subtitle="Validated competition outcomes and academic symposium presentations, led by our med-tech hackathon win and national finalist finish."
+          subtitle="Hackathon outcomes and academic symposium presentations, led by our med-tech hackathon win and national finalist finish."
           accent="orange"
         />
 
@@ -60,9 +60,9 @@ export const AchievementsSection: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Footer: Associated Project Banner & Evidence */}
+                {/* Footer: Associated Project Banner */}
                 <div>
-                  <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5 mb-4 flex items-center justify-between gap-3">
+                  <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-between gap-3">
                     <div>
                       <span className="font-mono text-[10px] uppercase text-white/40 block">Associated Project</span>
                       <span className="font-mono text-xs text-[#f5f5f0] font-semibold">{item.associatedProject}</span>
@@ -72,16 +72,13 @@ export const AchievementsSection: React.FC = () => {
                         href={item.projectUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition-colors text-xs font-mono"
                         title="View repository"
                       >
-                        <ExternalLink size={14} />
+                        <span>Repository</span>
+                        <ExternalLink size={13} />
                       </a>
                     )}
-                  </div>
-
-                  <div className="font-mono text-[11px] text-white/40 pt-2 border-t border-white/5">
-                    Evidence: {item.evidence}
                   </div>
                 </div>
 

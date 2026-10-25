@@ -89,7 +89,7 @@ export const AllProjects: React.FC<AllProjectsProps> = ({ projects, onSelectProj
 
         {/* Results Counter */}
         <div className="font-mono text-xs text-white/40 mb-6 flex items-center justify-between">
-          <span>Showing {filteredProjects.length} of {projects.length} verified repositories</span>
+          <span>Showing {filteredProjects.length} of {projects.length} repositories</span>
           {searchQuery && (
             <button 
               onClick={() => { setSearchQuery(''); setSelectedCategory('All'); }}

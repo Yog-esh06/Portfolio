@@ -15,8 +15,6 @@ import { LinkedInUpdates } from './components/updates/LinkedInUpdates';
 import { SkillsSection } from './components/skills/SkillsSection';
 import { ProjectModal } from './components/common/ProjectModal';
 import { ResumeModal } from './components/common/ResumeModal';
-import { CustomCursor } from './components/common/CustomCursor';
-import { SpotlightBackground } from './components/common/SpotlightBackground';
 
 export const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -25,13 +23,6 @@ export const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-[#08090b] text-[#f5f5f0] selection:bg-[#d4ff33] selection:text-[#08090b]">
-      
-      {/* Dynamic Cursor Reactive Spotlight */}
-      <SpotlightBackground />
-
-      {/* Custom Spring Inertia Cursor (Desktop Only) */}
-      <CustomCursor />
-
       {/* Global Navigation Header */}
       <Header 
         onMobileMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
@@ -73,7 +64,7 @@ export const App: React.FC = () => {
         {/* 06. Professional Experience (Deloitte Controls Assurance & SRM Research) */}
         <ExperienceSection />
 
-        {/* 07. Verified Credentials & Certifications Gallery (72 Items with Detail Modal) */}
+        {/* 07. Certifications & Credentials Gallery with Detail Modal */}
         <CertificatesSection />
 
         {/* 08. Writing & Updates: Real Dispatches From LinkedIn */}

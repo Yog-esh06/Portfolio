@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, Download, ExternalLink, FileText, CheckCircle2, ShieldCheck, GraduationCap, Briefcase, Award } from 'lucide-react';
+import { X, Download, ExternalLink, FileText, Code2, GraduationCap, Briefcase, Award } from 'lucide-react';
 import { profileData } from '../../data/profile';
 import { experienceData } from '../../data/experience';
 import { researchData } from '../../data/research';
@@ -52,7 +52,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 Curriculum Vitae / Resume
               </h2>
               <span className="font-mono text-xs text-white/50">
-                Yogesh R. Mehta • Verified Technical Record
+                Yogesh R. Mehta • Engineering Background & Experience
               </span>
             </div>
           </div>
@@ -215,7 +215,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           {/* Technical Capabilities */}
           <div className="space-y-3">
             <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[#d4ff33]">
-              <CheckCircle2 size={16} /> Technical Competencies
+              <Code2 size={16} /> Technical Competencies
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {skillsData.map((cat) => (
@@ -238,7 +238,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         {/* Footer Notice */}
         <div className="p-4 border-t border-white/10 bg-[#08090b]/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-white/50">
           <div className="flex items-center gap-2">
-            <ShieldCheck size={14} className="text-[#d4ff33]" />
+            <FileText size={14} className="text-[#d4ff33]" />
             <span>Target PDF: public/documents/Yogesh-R-Mehta-Resume.pdf</span>
           </div>
           <button

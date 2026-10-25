@@ -3,7 +3,7 @@ import { Project } from '../../types';
 import { SectionHeading } from '../common/SectionHeading';
 import { Badge } from '../common/Badge';
 import { GithubIcon } from '../common/Icons';
-import { ArrowUpRight, Activity, ShieldCheck, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Activity, ArrowRight } from 'lucide-react';
 
 interface FeaturedProjectsProps {
   projects: Project[];
@@ -54,7 +54,7 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects, on
                       )}
                     </div>
                     <div className="flex items-center gap-2 font-mono text-xs text-white/50">
-                      <ShieldCheck size={14} className="text-[#c8f135]" />
+                      <Activity size={14} className="text-[#c8f135]" />
                       <span>{project.status}</span>
                     </div>
                   </div>

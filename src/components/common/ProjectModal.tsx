@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Project } from '../../types';
 import { Badge } from './Badge';
 import { GithubIcon } from './Icons';
-import { X, ExternalLink, CheckCircle2, Layers, Cpu, Activity, AlertCircle } from 'lucide-react';
+import { X, ExternalLink, Layers, Cpu, Activity, AlertCircle } from 'lucide-react';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -84,7 +84,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
           <div className="p-4 rounded-xl bg-[#c8f135]/[0.04] border border-[#c8f135]/20">
             <div className="flex items-center gap-2 text-[#c8f135] font-mono text-xs font-semibold uppercase tracking-wider mb-2">
-              <CheckCircle2 size={14} /> The Solution & Architecture
+              <Layers size={14} /> The Solution & Architecture
             </div>
             <p className="text-sm text-[#94a3b8] leading-relaxed">
               {project.solution}
@@ -114,11 +114,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           </div>
         )}
 
-        {/* Verified Metrics Strip */}
+        {/* Project Metrics Strip */}
         {project.metrics && project.metrics.length > 0 && (
           <div className="mb-6">
             <h4 className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#94a3b8] font-semibold mb-3">
-              <Cpu size={14} className="text-[#c8f135]" /> Verified Metrics & Standards
+              <Cpu size={14} className="text-[#c8f135]" /> Project Metrics & Standards
             </h4>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {project.metrics.map((metric, idx) => (

@@ -20,7 +20,7 @@ export const profileData = {
     realCostDemo: "https://realcost-sigma.vercel.app"
   },
   stats: [
-    { label: "Verified Projects", value: "12+" },
+    { label: "Software Projects", value: "12+" },
     { label: "Research Presented", value: "SRM '26" },
     { label: "Hackathon Standing", value: "Top 8 / 300" },
     { label: "Deloitte Badges", value: "6 Badges" }

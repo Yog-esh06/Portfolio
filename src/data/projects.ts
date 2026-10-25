@@ -232,8 +232,8 @@ export const projectsData: Project[] = [
     featured: false,
     status: "Production Prototype",
     summary: "A full-stack equipment rental and procurement platform catering to Indian construction and farming sectors, featuring role-based dashboards, driver applications, and realtime communications.",
-    problem: "Heavy machinery procurement in tier-2/3 Indian regions is plagued by informal brokering, non-transparent pricing, lack of verified operators, and fragmented logistics.",
-    solution: "HeavyHub provides verified equipment listings, multi-role access (renters, owners, certified drivers, and admins), cart workflows, and direct messaging powered by Supabase Realtime.",
+    problem: "Heavy machinery procurement in tier-2/3 Indian regions is plagued by informal brokering, non-transparent pricing, lack of certified operators, and fragmented logistics.",
+    solution: "HeavyHub provides structured equipment listings, multi-role access (renters, owners, certified drivers, and admins), cart workflows, and direct messaging powered by Supabase Realtime.",
     architecture: [
       { name: "Role-Based Engine", role: "Access Control", detail: "Segmented portals for machinery owners, renters, and licensed heavy equipment drivers." },
       { name: "Realtime Broker", role: "Supabase Pub/Sub", detail: "Coordinates real-time booking notifications and operator chat." }
@@ -309,10 +309,10 @@ export const projectsData: Project[] = [
     status: "Production Prototype",
     summary: "Ingests multiformat business documents, extracts structured tables, and executes hybrid lexical and semantic search with citation validation and hash-chained audit trails.",
     problem: "Document question-answering systems hallucinate answers and fail to trace claims back to specific paragraphs, leading to compliance risks in business analysis.",
-    solution: "Combines dense embeddings with BM25 lexical retrieval and knowledge graph expansion. Verifies drafted answers against retrieved evidence passages and refuses unsupported queries.",
+    solution: "Combines dense embeddings with BM25 lexical retrieval and knowledge graph expansion. Cross-checks drafted answers against retrieved evidence passages and refuses unsupported queries.",
     architecture: [
       { name: "Hybrid Retriever", role: "BM25 + Dense", detail: "Executes multi-stage retrieval over chunked document hierarchies." },
-      { name: "Citation Gate", role: "Evidence Validation", detail: "Ensures every generated assertion maps to verified document passages." }
+      { name: "Citation Gate", role: "Evidence Validation", detail: "Ensures every generated assertion maps to cited document passages." }
     ],
     technologies: ["Python 3.10+", "FastAPI", "Next.js", "Docker", "BM25"],
     metrics: [
@@ -350,6 +350,59 @@ export const projectsData: Project[] = [
     highlights: [
       "Rigorous ablation demonstrating that temporal derivatives capture emotional transitions much better than isolated static features.",
       "Trained on stratified 80/20 split with Gaussian noise and pitch-shifting data augmentation."
+    ]
+  },
+  {
+    id: "janseva",
+    title: "JanSeva",
+    tagline: "Civic issue reporting system with image classification and interactive mapping.",
+    category: "FinTech & Full-Stack",
+    featured: false,
+    status: "Production Prototype",
+    summary: "A Spring Boot civic reporting application that allows citizens to report municipal and infrastructure issues with photo attachments, geographic tags, and Leaflet map markers.",
+    problem: "Citizens struggle with convoluted municipal complaint workflows, lack of geolocation tracking, and absence of visual verification for civic repair status.",
+    solution: "JanSeva provides a streamlined reporting interface with photo upload, automatic coordinate mapping, MySQL issue tracking, and administrative triage dashboards.",
+    architecture: [
+      { name: "Backend API", role: "Spring Boot 3", detail: "RESTful endpoints managing user authentication, issue records, and geo queries." },
+      { name: "Data Persistence", role: "MySQL Engine", detail: "Relational persistence tracking issue statuses, timestamps, and locations." }
+    ],
+    technologies: ["Java 17", "Spring Boot", "MySQL", "REST API", "Maven", "Leaflet"],
+    metrics: [
+      { label: "Language", value: "Java 17" },
+      { label: "Framework", value: "Spring Boot" },
+      { label: "Database", value: "MySQL" }
+    ],
+    githubUrl: "https://github.com/Yog-esh06/Janseva",
+    highlights: [
+      "Full-stack civic issue reporting pipeline with photo and location markers.",
+      "Interactive map integration with administrative status workflow."
+    ]
+  },
+  {
+    id: "thermotwin-project",
+    title: "ThermoTwin",
+    tagline: "Machine-learning-enhanced thermal digital twin for predictive control experiments in simulated data centers.",
+    category: "Causal AI",
+    featured: false,
+    badge: "Digital Twin Simulation",
+    status: "Research Prototype",
+    summary: "A software-simulated digital twin combining an 8-rack resistance-capacitance thermal model with noisy sensor observation handling, multi-horizon ML forecasting, and MPC-style predictive control. Explicitly evaluated in simulation.",
+    problem: "Server density in data centers causes localized thermal hotspots and high cooling costs, while hardware testing on physical server clusters risks operational outages.",
+    solution: "Implements RK4-integrated thermal dynamics, noisy sensor streams, and hybrid physics-plus-PyTorch residual forecasting to test predictive cooling policies without physical hardware risks.",
+    architecture: [
+      { name: "Thermal Core", role: "RC Simulation", detail: "Simulates rack thermal dynamics, recirculation, and cooling lag via RK4." },
+      { name: "Forecaster", role: "Residual Hybrid", detail: "PyTorch GRU and gradient boosting predicting hotspot horizons." }
+    ],
+    technologies: ["Python 3.11+", "PyTorch", "Flask", "NumPy", "SciPy", "Pandas"],
+    metrics: [
+      { label: "Scope", value: "Simulation" },
+      { label: "Core", value: "8-Rack RC" },
+      { label: "Forecaster", value: "PyTorch GRU" }
+    ],
+    githubUrl: "https://github.com/Yog-esh06/Thermal-Management-and-Energy-Optimization-in-Data-Centers/tree/main",
+    highlights: [
+      "Software research prototype with transparent physics simulation and residual learning.",
+      "Explicitly documented as simulation research; not tested on physical hardware."
     ]
   }
 ];

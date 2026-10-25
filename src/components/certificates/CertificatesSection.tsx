@@ -4,7 +4,7 @@ import { CertificateItem } from '../../types';
 import { SectionHeading } from '../common/SectionHeading';
 import { Badge } from '../common/Badge';
 import { CertificateModal } from './CertificateModal';
-import { Search, ShieldCheck, SlidersHorizontal, ArrowUpRight } from 'lucide-react';
+import { Search, SlidersHorizontal, ArrowUpRight } from 'lucide-react';
 
 const CATEGORIES = [
   'All',
@@ -44,9 +44,9 @@ export const CertificatesSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SectionHeading
-          number="// 06. VERIFIED CREDENTIALS"
-          title="Continuous Technical Mastery"
-          subtitle="Audited repository of 72 professional badges, national NPTEL engineering accreditations, and corporate job simulations."
+          number="// 06. CERTIFICATIONS & CREDENTIALS"
+          title="Technical Credentials & Learning Records"
+          subtitle="Curated professional certifications, national NPTEL engineering accreditations, and technical job simulations."
           accent="lime"
         />
 
@@ -61,7 +61,6 @@ export const CertificatesSection: React.FC = () => {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  data-cursor="pointer"
                   className={`font-mono text-xs px-3.5 py-1.5 rounded-xl border transition-all ${
                     active
                       ? 'bg-[#d4ff33] text-[#08090b] border-[#d4ff33] font-bold shadow-md shadow-[#d4ff33]/15'
@@ -81,7 +80,7 @@ export const CertificatesSection: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search 72 credentials by issuer, skill..."
+              placeholder="Search credentials by title, issuer, skill..."
               className="w-full pl-10 pr-4 py-2 rounded-xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm text-white placeholder-white/40 focus:outline-none focus:border-[#d4ff33] focus:ring-1 focus:ring-[#d4ff33] transition-all font-mono"
             />
           </div>
@@ -112,8 +111,6 @@ export const CertificatesSection: React.FC = () => {
                 <div
                   key={cert.id}
                   onClick={() => setActiveCert(cert)}
-                  data-cursor="view"
-                  data-cursor-text="INFO"
                   className={`group cursor-pointer rounded-2xl p-5 glass-panel border transition-all duration-200 hover:-translate-y-1 ${
                     isDeloitte 
                       ? 'border-[#d4ff33]/30 hover:border-[#d4ff33]' 
@@ -147,12 +144,10 @@ export const CertificatesSection: React.FC = () => {
                     </p>
                   )}
 
-                  {/* Verification Footer */}
+                  {/* Footer */}
                   <div className="flex items-center justify-between pt-3 border-t border-white/5 font-mono text-[10px] text-white/40">
-                    <span className="flex items-center gap-1 text-[#d4ff33]">
-                      <ShieldCheck size={12} /> Verified Certificate
-                    </span>
-                    <span className="flex items-center gap-1 text-white/50 group-hover:text-white transition-colors">
+                    <span className="text-white/50">{cert.category}</span>
+                    <span className="flex items-center gap-1 text-[#d4ff33] group-hover:underline transition-colors">
                       Details <ArrowUpRight size={11} />
                     </span>
                   </div>
