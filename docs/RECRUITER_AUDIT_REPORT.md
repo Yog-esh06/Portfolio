@@ -102,3 +102,4 @@ Direct inspection of Yogesh's local workspaces and GitHub remotes:
 7. Integrate `ResumeModal`, `CertificateModal`, `CustomCursor`, and `SpotlightBackground`.
 8. Clean up all decorative "Verified" badges to avoid clutter.
 9. Verify static build with `npm run build` and ensure zero errors.
+

@@ -9,3 +9,4 @@ The application checks for this file at runtime and links directly to:
 When this file is present:
 - The "Download Resume" buttons in the Hero, Navigation, and Footer will trigger a direct PDF download.
 - The "View Resume" buttons will open the PDF in a new browser tab with fallback to the structured digital resume modal.
+

@@ -121,3 +121,4 @@ export const LinkedInUpdates: React.FC = () => {
     </section>
   );
 };
+
