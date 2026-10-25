@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../common/Icons';
 import { profileData } from '../../data/profile';
 
 interface HeaderProps {
   onMobileMenuToggle: () => void;
   isMobileMenuOpen: boolean;
+  onOpenResume: () => void;
 }
 
 const NAV_LINKS = [
-  { label: 'Work', href: '#work' },
-  { label: 'Library', href: '#library' },
+  { label: 'Accolades', href: '#achievements' },
+  { label: 'Projects', href: '#work' },
   { label: 'Research', href: '#research' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Accolades', href: '#achievements' },
-  { label: 'Credentials', href: '#certificates' },
+  { label: 'Certificates', href: '#certificates' },
+  { label: 'Updates', href: '#updates' },
   { label: 'Skills', href: '#skills' }
 ];
 
-export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, isMobileMenuOpen }) => {
+export const Header: React.FC<HeaderProps> = ({ 
+  onMobileMenuToggle, 
+  isMobileMenuOpen,
+  onOpenResume 
+}) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -33,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, isMobileMenu
     <header 
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled 
-          ? 'bg-[#090b0e]/85 backdrop-blur-md border-b border-white/10 py-3 shadow-lg' 
+          ? 'bg-[#08090b]/90 backdrop-blur-md border-b border-white/10 py-3 shadow-lg' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -45,15 +50,15 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, isMobileMenu
           className="flex items-center gap-2.5 group"
           aria-label="Yogesh R. Mehta - Home"
         >
-          <div className="w-9 h-9 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center font-display font-bold text-sm tracking-wider group-hover:border-[#c8f135] group-hover:text-[#c8f135] transition-all">
+          <div className="w-9 h-9 rounded-xl bg-white/[0.05] border border-white/15 flex items-center justify-center font-display font-extrabold text-sm tracking-wider group-hover:border-[#d4ff33] group-hover:text-[#d4ff33] transition-all">
             YM
           </div>
           <div className="hidden sm:block">
-            <span className="font-display font-bold text-sm text-[#f8fafc] group-hover:text-[#c8f135] transition-colors">
+            <span className="font-display font-bold text-sm text-[#f5f5f0] group-hover:text-[#d4ff33] transition-colors">
               Yogesh R. Mehta
             </span>
             <span className="block font-mono text-[10px] text-white/40">
-              Systems & Research
+              Systems & AI/ML
             </span>
           </div>
         </a>
@@ -64,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, isMobileMenu
             <a
               key={link.href}
               href={link.href}
-              className="px-3.5 py-1.5 rounded-xl font-mono text-xs text-[#94a3b8] hover:text-[#f8fafc] hover:bg-white/5 transition-all"
+              className="px-3.5 py-1.5 rounded-xl font-mono text-xs text-[#94a3b8] hover:text-[#f5f5f0] hover:bg-white/5 transition-all"
             >
               {link.label}
             </a>
@@ -73,6 +78,14 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, isMobileMenu
 
         {/* Actions Strip */}
         <div className="hidden sm:flex items-center gap-2.5">
+          <button
+            onClick={onOpenResume}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-mono text-xs font-semibold border border-white/10 transition-colors"
+          >
+            <FileText size={13} className="text-[#d4ff33]" />
+            <span>Resume</span>
+          </button>
+
           <a
             href={profileData.links.github}
             target="_blank"
@@ -80,7 +93,7 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, isMobileMenu
             aria-label="GitHub Profile"
             className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/10 transition-colors"
           >
-            <GithubIcon size={17} />
+            <GithubIcon size={16} />
           </a>
 
           <a
@@ -90,12 +103,12 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, isMobileMenu
             aria-label="LinkedIn Profile"
             className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-[#38bdf8] border border-white/10 transition-colors"
           >
-            <LinkedinIcon size={17} />
+            <LinkedinIcon size={16} />
           </a>
 
           <a
             href="#contact"
-            className="px-4 py-2 rounded-xl bg-[#c8f135] text-[#090b0e] font-mono text-xs font-bold hover:bg-[#d6f658] transition-colors"
+            className="px-4 py-2 rounded-xl bg-[#d4ff33] text-[#08090b] font-mono text-xs font-bold hover:bg-[#bce628] transition-colors"
           >
             Contact
           </a>
@@ -114,4 +127,3 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuToggle, isMobileMenu
     </header>
   );
 };
-

@@ -8,7 +8,7 @@ export const projectsData: Project[] = [
     category: "Agentic AI",
     featured: true,
     featuredOrder: 1,
-    badge: "Industry Games Top 8 Finalist (out of 300)",
+    badge: "The Industry Games Top 8 Finalist",
     status: "Production Prototype",
     summary: "An autonomous operational intelligence platform that monitors enterprise business signals, detects anomalous variances with Sentinel, launches cited multi-agent root cause investigations, and gates remediations through human approval.",
     problem: "Modern business operations generate fragmented metrics across billing, supply chains, customer SLAs, and support queues. When critical variances occur, teams waste hours correlating spreadsheets without traceable evidence or audit chains.",
@@ -21,7 +21,7 @@ export const projectsData: Project[] = [
     ],
     technologies: ["FastAPI", "Python 3.12", "Next.js", "TypeScript", "Supabase Auth & RLS", "Docker", "Tailwind CSS"],
     metrics: [
-      { label: "Competition Standing", value: "Top 8 / 300" },
+      { label: "Competition Standing", value: "Top 8 / 300+" },
       { label: "Detection Engine", value: "Sub-Second" },
       { label: "Evidence Rigor", value: "100% Grounded" },
       { label: "Security", value: "Row-Level RLS" }
@@ -60,7 +60,7 @@ export const projectsData: Project[] = [
       { label: "Interface", value: "Live Graph" },
       { label: "Frontend", value: "Next.js 16" }
     ],
-    githubUrl: "https://github.com/Yog-esh06/Aeon",
+    githubUrl: "https://github.com/Yog-esh06/Aeon-multi-agent-RAG-orchestration-engine",
     highlights: [
       "Asynchronous FastAPI backend coupled with distributed Celery 5.6 task workers over Redis 7.4.",
       "Adversarial Critic loop rejecting unsubstantiated assertions until empirical rubric criteria are met.",
@@ -91,7 +91,7 @@ export const projectsData: Project[] = [
       { label: "RL Algorithm", value: "MaskablePPO" },
       { label: "Solver", value: "OR-Tools 9.15" },
       { label: "Map Engine", value: "MapLibre GL" },
-      { label: "CI Pipeline", value: "Automated Passing" }
+      { label: "CI Pipeline", value: "Passing" }
     ],
     githubUrl: "https://github.com/Yog-esh06/Waypoint",
     highlights: [
@@ -108,11 +108,11 @@ export const projectsData: Project[] = [
     category: "Causal AI",
     featured: true,
     featuredOrder: 4,
-    badge: "Causal AI Platform",
+    badge: "Causal Inference",
     status: "Production Prototype",
     summary: "A local-first causal inference workbench that separates predictive correlations from intervention outcomes, providing counterfactual estimation and policy optimization under real-world constraints.",
     problem: "Standard supervised machine learning answers 'what outcome is correlated with these features?' but fails catastrophically when evaluating policy interventions because it ignores confounding bias and reverse causality.",
-    solution: "Quarry implements Structural Causal Models (SCMs), do-calculus interventions, doubly-robust estimators, and Heterogeneous Treatment Effect (HTE) models. Operators can simulate hypothetical business policy changes (e.g. loan risk thresholds or pricing tiers) and inspect counterfactual outcomes with rigorous confidence bounds.",
+    solution: "Quarry implements Structural Causal Models (SCMs), do-calculus interventions, doubly-robust estimators, and Heterogeneous Treatment Effect (HTE) models. Operators can simulate hypothetical business policy changes and inspect counterfactual outcomes with rigorous confidence bounds.",
     architecture: [
       { name: "Structural Causal Model", role: "DAG Specification", detail: "Formulates explicit causal directed acyclic graphs to identify valid adjustment sets." },
       { name: "Doubly Robust Estimator", role: "Effect Quantification", detail: "Estimates Average and Conditional Treatment Effects resistant to model misspecification." },
@@ -139,11 +139,12 @@ export const projectsData: Project[] = [
     title: "RealCost",
     tagline: "Uncover the compounding true financial cost of daily habits.",
     category: "FinTech & Full-Stack",
-    featured: false,
+    featured: true,
+    featuredOrder: 5,
     badge: "Live Deployed",
     status: "Live Deployed",
     summary: "A sleek dark-mode personal finance utility that computes the hidden annual cost of small recurring habits, with interactive visualizations, savings projections, and Gemini AI optimization insights.",
-    problem: "Consumers frequently underestimate the financial drain of small daily expenses (coffee, subscriptions, impulsive ordering) because payments appear trivial in isolation.",
+    problem: "Consumers frequently underestimate the financial drain of small daily expenses because payments appear trivial in isolation.",
     solution: "RealCost calculates true monthly and yearly expense curves across habit categories, models potential compounding savings if habits are curtailed, and leverages Google Gemini AI to generate actionable habit replacement strategies.",
     architecture: [
       { name: "Interactive Ledger", role: "Client State", detail: "Dynamic habit tracking with real-time frequency recalculations and JSON data export." },
@@ -167,32 +168,33 @@ export const projectsData: Project[] = [
     ]
   },
   {
-    id: "thermotwin",
-    title: "ThermoTwin",
-    tagline: "Physics-based digital twin with ML forecasting for data center cooling optimization.",
-    category: "Systems & Infra",
+    id: "spf",
+    title: "Student Academic Performance Prediction",
+    tagline: "Cost-sensitive risk classification with Shannon entropy uncertainty gating and SHAP explainability.",
+    category: "Causal AI",
     featured: false,
-    badge: "34 Pytests Passing",
-    status: "Benchmarked",
-    summary: "A digital twin prototype simulating rack-level thermodynamics in data halls. Integrates multi-horizon ML inlet temperature forecasting with counterfactual cooling controls to eliminate hotspots with minimal chiller energy.",
-    problem: "Data centers consume massive electrical power for cooling. Overcooling to avoid thermal breaches wastes millions in energy, while undercooling risks catastrophic server hardware throttling.",
-    solution: "ThermoTwin combines a transient thermal fluid model of 4-12 server racks with multi-horizon predictive models (XGBoost, GRU, Random Forest). When an inlet breach is forecasted, the system clones the twin across 6 counterfactual cooling setpoints to select the safest, lowest-energy action.",
+    badge: "Research Project",
+    status: "Research Prototype",
+    summary: "An advanced machine learning decision-support framework designed to forecast continuous student examination scores, detect performance risk tiers, quantify prediction uncertainty, and decode model predictions using SHAP values.",
+    problem: "Standard educational ML models treat false negatives (missed at-risk students) the same as false positives, leading to catastrophic delays in pedagogical intervention.",
+    solution: "Implements an asymmetric cost matrix in XGBoost to penalize False Negatives, transforms cross-sectional data into temporal phases (Early, Midterm, Late Fatigue), calculates Shannon entropy for uncertainty gating (>0.85 triggers human educator review), and provides SHAP attribution.",
     architecture: [
-      { name: "Physics Engine", role: "Rack & Air Model", detail: "Simulates server workload, recirculation, chilled water loop, and ambient weather cycles." },
-      { name: "Predictive Forecaster", role: "Multi-Horizon ML", detail: "Forecasts rack inlet temperatures 5 to 60 minutes into the future using XGBoost & GRUs." },
-      { name: "Twin Cloner", role: "Counterfactual Test", detail: "Clones the current thermal state into 6 parallel models to simulate proposed fan/chiller setpoints." }
+      { name: "Cost-Sensitive Matrix", role: "Loss Optimization", detail: "Heavily penalizes False Negatives to prioritize struggling student identification." },
+      { name: "Uncertainty Engine", role: "Shannon Entropy", detail: "Flags high-entropy predictions (>0.85) for human educator intervention." },
+      { name: "Explainable XAI", role: "SHAP Values", detail: "Generates personalized pedagogical intervention driver reports." }
     ],
-    technologies: ["Python 3.11", "Flask", "PyTorch", "XGBoost", "FastAPI", "Chart.js", "Playwright"],
+    technologies: ["Python", "Flask", "scikit-learn", "XGBoost", "SHAP", "SMOTE", "Pandas"],
     metrics: [
-      { label: "Test Suite", value: "34 Passed" },
-      { label: "Forecast Horizons", value: "5 to 60 min" },
-      { label: "Simulated Scale", value: "12 Racks" },
-      { label: "Safety Standard", value: "ASHRAE 27°C" }
+      { label: "Institution", value: "SRM IST" },
+      { label: "Mentor", value: "Dr. V. Angayarkanni" },
+      { label: "Risk Strategy", value: "Cost-Sensitive" },
+      { label: "Explainability", value: "SHAP Attribution" }
     ],
+    githubUrl: "https://github.com/Yog-esh06/Student-Academic-Performance-Prediction",
     highlights: [
-      "34 automated pytest suites verifying thermodynamic conservation laws and state cloning.",
-      "Supports 5 simulated climate profiles including coastal monsoon, hot desert, and temperate.",
-      "Comparative benchmark demonstrating significant energy reduction over conventional reactive setpoints."
+      "Academic research project developed under the mentorship of Dr. V. Angayarkanni at SRM IST.",
+      "Cost-sensitive asymmetric classification prioritizing student retention and early academic intervention.",
+      "Shannon entropy uncertainty quantification preventing blind model reliance."
     ]
   },
   {
@@ -216,6 +218,7 @@ export const projectsData: Project[] = [
       { label: "Interpretability", value: "High" },
       { label: "API Framework", value: "FastAPI" }
     ],
+    githubUrl: "https://github.com/Yog-esh06/ChronoOps-AI",
     highlights: [
       "Zero data persistence design guaranteeing complete operational telemetry privacy.",
       "Provides interpretable decomposition baselines rather than uninspectable deep nets."
@@ -273,30 +276,80 @@ export const projectsData: Project[] = [
     ]
   },
   {
-    id: "spf",
-    title: "Student Performance Prediction",
-    tagline: "Explainable machine learning framework with SHAP uncertainty quantification.",
-    category: "Causal AI",
+    id: "argus",
+    title: "Argus",
+    tagline: "Industrial-safety operations console and prototype camera event triage backend.",
+    category: "Systems & Infra",
     featured: false,
     status: "Research Prototype",
-    summary: "A research-backed academic decision-support framework forecasting examination trajectories, identifying student risk tiers, and decoding feature impacts via SHAP value explanations.",
-    problem: "Predictive grading systems often act as biased black boxes without giving educators actionable insight into which specific factors (attendance, test frequency, study habits) drove the outcome.",
-    solution: "Combines gradient boosting regression with SHAP (SHapley Additive exPlanations) and prediction interval modeling, allowing academic mentors to interpret individual risk drivers.",
+    summary: "An industrial-safety operations console prototype modeling how video-derived vision signals and zone breach events become reviewable security incidents.",
+    problem: "Industrial workspaces with hazardous machinery require rapid detection of perimeter breaches and PPE violations without flooding safety operators with false alerts.",
+    solution: "Implements zone-aware spatial mapping, incident severity scoring, and structured triage queues for safety personnel.",
     architecture: [
-      { name: "Feature Pipeline", role: "Data Preprocessing", detail: "Normalizes longitudinal academic metrics and socio-study behavioral features." },
-      { name: "Ensemble Forecaster", role: "Continuous Prediction", detail: "Generates point predictions with calibrated uncertainty bounds." },
-      { name: "SHAP Explainer", role: "Feature Attribution", detail: "Computes exact Shapley values for individualized educator intervention advice." }
+      { name: "Zone Mapper", role: "Spatial Coordinates", detail: "Defines dynamic exclusion polygons and hazard perimeters." },
+      { name: "Incident Triage", role: "FastAPI Engine", detail: "Ranks severity of detected events and alerts safety operators." }
     ],
-    technologies: ["Python", "scikit-learn", "SHAP", "Pandas", "Matplotlib"],
+    technologies: ["Python 3.11+", "Next.js 14", "FastAPI", "Docker Compose"],
     metrics: [
-      { label: "Institution", value: "SRM IST" },
-      { label: "Mentor", value: "Dr. V. Angayarkanni" },
-      { label: "Explainability", value: "SHAP Values" }
+      { label: "Frontend", value: "Next.js 14" },
+      { label: "API Framework", value: "FastAPI" }
     ],
+    githubUrl: "https://github.com/Yog-esh06/Argus",
     highlights: [
-      "Academic research project developed under the mentorship of Dr. V. Angayarkanni at SRM IST.",
-      "Quantifies model prediction uncertainty rather than providing overconfident point estimates."
+      "Next.js dashboard coupled with FastAPI service and containerized Docker setup.",
+      "Structured incident classification modeling real-world safety triage workflows."
+    ]
+  },
+  {
+    id: "neuroforge",
+    title: "NeuroForge AI",
+    tagline: "Evidence-grounded document intelligence and decision support for complex business records.",
+    category: "Agentic AI",
+    featured: false,
+    status: "Production Prototype",
+    summary: "Ingests multiformat business documents, extracts structured tables, and executes hybrid lexical and semantic search with citation validation and hash-chained audit trails.",
+    problem: "Document question-answering systems hallucinate answers and fail to trace claims back to specific paragraphs, leading to compliance risks in business analysis.",
+    solution: "Combines dense embeddings with BM25 lexical retrieval and knowledge graph expansion. Verifies drafted answers against retrieved evidence passages and refuses unsupported queries.",
+    architecture: [
+      { name: "Hybrid Retriever", role: "BM25 + Dense", detail: "Executes multi-stage retrieval over chunked document hierarchies." },
+      { name: "Citation Gate", role: "Evidence Validation", detail: "Ensures every generated assertion maps to verified document passages." }
+    ],
+    technologies: ["Python 3.10+", "FastAPI", "Next.js", "Docker", "BM25"],
+    metrics: [
+      { label: "Retrieval", value: "Hybrid BM25+Dense" },
+      { label: "Audit", value: "Hash-Chained" }
+    ],
+    githubUrl: "https://github.com/Yog-esh06/Neuroforage-AI",
+    highlights: [
+      "Hybrid search combining BM25 keyword matching with vector embeddings and knowledge graphs.",
+      "Strict citation validator that blocks answers when source evidence is insufficient."
+    ]
+  },
+  {
+    id: "ser-audio",
+    title: "Speech Emotion Recognition (SER)",
+    tagline: "Prosodic-temporal feature ablation with deep 2D CNNs on the RAVDESS corpus.",
+    category: "Causal AI",
+    featured: false,
+    badge: "UROP Research",
+    status: "Research Prototype",
+    summary: "An acoustic deep learning study comparing MFCC dynamic spectral derivatives against pitch and energy features for 6-class speech emotion classification, achieving 92.78% accuracy.",
+    problem: "Raw speech features often conflate static speaker voice characteristics with transient emotional cues.",
+    solution: "Extracted 40 MFCC coefficients with delta and delta-delta temporal derivatives, forming a 3-channel input to a 4-block deep CNN with batch normalization and dropout.",
+    architecture: [
+      { name: "Feature Extraction", role: "Librosa Audio Core", detail: "Computes 40-coefficient MFCCs and first/second temporal derivatives." },
+      { name: "CNN Classifier", role: "Deep 4-Block Net", detail: "Classifies 6 emotion states with batch normalization and Adam optimizer." }
+    ],
+    technologies: ["Python", "TensorFlow", "Librosa", "scikit-learn", "soundfile"],
+    metrics: [
+      { label: "Accuracy", value: "92.78%" },
+      { label: "Dataset", value: "RAVDESS" },
+      { label: "Classes", value: "6 Emotions" }
+    ],
+    githubUrl: "https://github.com/Yog-esh06/Emotional-Classification-using-Audio-Data",
+    highlights: [
+      "Rigorous ablation demonstrating that temporal derivatives capture emotional transitions much better than isolated static features.",
+      "Trained on stratified 80/20 split with Gaussian noise and pitch-shifting data augmentation."
     ]
   }
 ];
-

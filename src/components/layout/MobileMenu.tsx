@@ -1,25 +1,27 @@
 import React, { useEffect } from 'react';
 import { profileData } from '../../data/profile';
 import { GithubIcon, LinkedinIcon } from '../common/Icons';
-import { X } from 'lucide-react';
+import { X, FileText } from 'lucide-react';
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenResume: () => void;
 }
 
 const NAV_ITEMS = [
-  { label: '01. Flagship Work', href: '#work' },
-  { label: '02. Repository Archive', href: '#library' },
-  { label: '03. Systems Research', href: '#research' },
-  { label: '04. Deloitte Experience', href: '#experience' },
-  { label: '05. Hackathon Accolades', href: '#achievements' },
-  { label: '06. Credentials (72)', href: '#certificates' },
-  { label: '07. Technical Skills', href: '#skills' },
-  { label: '08. Get in Touch', href: '#contact' }
+  { label: '01. Competition Accolades', href: '#achievements' },
+  { label: '02. Flagship Projects', href: '#work' },
+  { label: '03. Project Library', href: '#library' },
+  { label: '04. Systems Research', href: '#research' },
+  { label: '05. Deloitte Experience', href: '#experience' },
+  { label: '06. 72 Credentials', href: '#certificates' },
+  { label: '07. LinkedIn Updates', href: '#updates' },
+  { label: '08. Technical Skills', href: '#skills' },
+  { label: '09. Contact', href: '#contact' }
 ];
 
-export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
+export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenResume }) => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -38,14 +40,14 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 z-50 lg:hidden bg-black/85 backdrop-blur-xl flex flex-col justify-between p-6 transition-all duration-300"
+      className="fixed inset-0 z-50 lg:hidden bg-black/90 backdrop-blur-xl flex flex-col justify-between p-6 transition-all duration-300"
       role="dialog"
       aria-modal="true"
     >
       {/* Top Bar with Brand & Close */}
       <div className="flex items-center justify-between pt-2 pb-6 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-[#c8f135] text-[#090b0e] flex items-center justify-center font-display font-bold text-xs">
+          <div className="w-8 h-8 rounded-lg bg-[#d4ff33] text-[#08090b] flex items-center justify-center font-display font-extrabold text-xs">
             YM
           </div>
           <span className="font-display font-bold text-sm text-white">Yogesh R. Mehta</span>
@@ -66,11 +68,19 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
             key={item.href}
             href={item.href}
             onClick={onClose}
-            className="font-mono text-base text-[#cbd5e1] hover:text-[#c8f135] py-2.5 px-3 rounded-xl hover:bg-white/5 transition-colors flex items-center justify-between"
+            className="font-mono text-sm text-[#cbd5e1] hover:text-[#d4ff33] py-2 px-3 rounded-xl hover:bg-white/5 transition-colors flex items-center justify-between"
           >
             <span>{item.label}</span>
           </a>
         ))}
+
+        <button
+          onClick={() => { onClose(); onOpenResume(); }}
+          className="mt-3 flex items-center justify-center gap-2 p-3 rounded-xl bg-[#d4ff33] text-[#08090b] font-mono text-xs font-bold"
+        >
+          <FileText size={15} />
+          <span>View Curriculum Vitae / Resume</span>
+        </button>
       </nav>
 
       {/* Footer Socials */}
@@ -100,4 +110,3 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
-
