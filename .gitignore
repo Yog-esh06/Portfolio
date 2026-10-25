@@ -24,5 +24,7 @@ dist-ssr
 *.sw?
 
 # Baseline certificate originals (keep untouched, not published to public dist)
-Certificates/
+/Certificates/
+/certificates_baseline.csv
+/certificates_manifest.json
 
