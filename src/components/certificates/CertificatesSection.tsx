@@ -4,7 +4,7 @@ import { CertificateItem } from '../../types';
 import { SectionHeading } from '../common/SectionHeading';
 import { Badge } from '../common/Badge';
 import { CertificateModal } from './CertificateModal';
-import { Search, SlidersHorizontal, ArrowUpRight } from 'lucide-react';
+import { Search, SlidersHorizontal, ArrowUpRight, Award } from 'lucide-react';
 
 const CATEGORIES = [
   'All',
@@ -40,11 +40,11 @@ export const CertificatesSection: React.FC = () => {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <section id="certificates" className="py-24 lg:py-32 border-b border-white/[0.06] relative">
+    <section id="certificates" className="py-20 lg:py-28 border-b border-white/[0.06] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SectionHeading
-          number="// 06. CERTIFICATIONS & CREDENTIALS"
+          number="// 05. CERTIFICATIONS & CREDENTIALS"
           title="Technical Credentials & Learning Records"
           subtitle="Curated professional certifications, national NPTEL engineering accreditations, and technical job simulations."
           accent="lime"
@@ -63,8 +63,8 @@ export const CertificatesSection: React.FC = () => {
                   onClick={() => setSelectedCategory(cat)}
                   className={`font-mono text-xs px-3.5 py-1.5 rounded-xl border transition-all ${
                     active
-                      ? 'bg-[#d4ff33] text-[#08090b] border-[#d4ff33] font-bold shadow-md shadow-[#d4ff33]/15'
-                      : 'bg-white/[0.03] text-[#94a3b8] border-white/10 hover:border-white/20 hover:text-white'
+                      ? 'bg-[#c084fc] text-[#08090b] border-[#c084fc] font-bold shadow-md shadow-[#c084fc]/25'
+                      : 'bg-white/[0.03] text-[#94a3b8] border-white/10 hover:border-[#c084fc]/40 hover:text-[#c084fc]'
                   }`}
                 >
                   {cat}
@@ -81,7 +81,7 @@ export const CertificatesSection: React.FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search credentials by title, issuer, skill..."
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm text-white placeholder-white/40 focus:outline-none focus:border-[#d4ff33] focus:ring-1 focus:ring-[#d4ff33] transition-all font-mono"
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-white/[0.04] border border-white/10 text-xs sm:text-sm text-white placeholder-white/40 focus:outline-none focus:border-[#c084fc] focus:ring-1 focus:ring-[#c084fc] transition-all font-mono"
             />
           </div>
 
@@ -93,16 +93,16 @@ export const CertificatesSection: React.FC = () => {
           {searchQuery && (
             <button 
               onClick={() => { setSearchQuery(''); setSelectedCategory('All'); }}
-              className="text-[#d4ff33] hover:underline"
+              className="text-[#c084fc] hover:underline"
             >
               Reset search
             </button>
           )}
         </div>
 
-        {/* Certificates Grid */}
+        {/* Minimalist Thumbnail Grid */}
         {filteredCerts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredCerts.map((cert) => {
               const isDeloitte = cert.category === 'Deloitte Exclusive';
               const isNPTEL = cert.category === 'NPTEL';
@@ -111,44 +111,44 @@ export const CertificatesSection: React.FC = () => {
                 <div
                   key={cert.id}
                   onClick={() => setActiveCert(cert)}
-                  className={`group cursor-pointer rounded-2xl p-5 glass-panel border transition-all duration-200 hover:-translate-y-1 ${
+                  className={`group cursor-pointer rounded-2xl p-5 bg-[#0b0d12] border transition-all duration-200 hover:-translate-y-1 flex flex-col justify-between ${
                     isDeloitte 
-                      ? 'border-[#d4ff33]/30 hover:border-[#d4ff33]' 
+                      ? 'border-[#d4ff33]/25 hover:border-[#d4ff33] hover:shadow-lg hover:shadow-[#d4ff33]/10' 
                       : isNPTEL
-                      ? 'border-[#38bdf8]/30 hover:border-[#38bdf8]'
-                      : 'border-white/10 hover:border-white/20'
+                      ? 'border-[#38bdf8]/25 hover:border-[#38bdf8] hover:shadow-lg hover:shadow-[#38bdf8]/10'
+                      : 'border-white/10 hover:border-[#c084fc]/50 hover:shadow-lg hover:shadow-[#c084fc]/10'
                   }`}
                 >
-                  {/* Category Pill & Year */}
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <Badge variant={isDeloitte ? 'lime' : isNPTEL ? 'cyan' : 'neutral'}>
-                      {cert.category}
-                    </Badge>
-                    {cert.year && (
-                      <span className="font-mono text-[11px] text-white/40">{cert.year}</span>
-                    )}
+                  <div>
+                    {/* Category Pill & Year */}
+                    <div className="flex items-center justify-between gap-2 mb-3">
+                      <Badge variant={isDeloitte ? 'lime' : isNPTEL ? 'cyan' : 'neutral'}>
+                        {cert.category}
+                      </Badge>
+                      {cert.year && (
+                        <span className="font-mono text-[11px] text-white/40 group-hover:text-white/60 transition-colors">
+                          {cert.year}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Title with multi-color gradient hover */}
+                    <h4 className="font-display text-base font-bold text-[#f8fafc] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-[#c084fc] group-hover:to-[#38bdf8] transition-all duration-200 mb-1 leading-snug line-clamp-2">
+                      {cert.title}
+                    </h4>
+
+                    {/* Issuer with subtle hover color */}
+                    <div className="font-mono text-xs text-[#94a3b8] group-hover:text-[#c084fc] transition-colors mb-4 flex items-center gap-1.5">
+                      <Award size={12} className="text-[#c084fc]" />
+                      <span>{cert.issuer}</span>
+                    </div>
                   </div>
 
-                  {/* Title & Issuer */}
-                  <h4 className="font-display text-base sm:text-lg font-bold text-[#f8fafc] group-hover:text-[#d4ff33] transition-colors mb-1 leading-snug">
-                    {cert.title}
-                  </h4>
-                  <div className="font-mono text-xs text-[#d4ff33] mb-3">
-                    {cert.issuer}
-                  </div>
-
-                  {/* Description */}
-                  {cert.description && (
-                    <p className="text-xs text-[#94a3b8] leading-relaxed line-clamp-3 mb-4">
-                      {cert.description}
-                    </p>
-                  )}
-
-                  {/* Footer */}
-                  <div className="flex items-center justify-between pt-3 border-t border-white/5 font-mono text-[10px] text-white/40">
-                    <span className="text-white/50">{cert.category}</span>
-                    <span className="flex items-center gap-1 text-[#d4ff33] group-hover:underline transition-colors">
-                      Details <ArrowUpRight size={11} />
+                  {/* Clean Footer Link */}
+                  <div className="flex items-center justify-between pt-3 border-t border-white/5 font-mono text-[11px] text-white/40 group-hover:text-white/70 transition-colors">
+                    <span>{cert.category}</span>
+                    <span className="flex items-center gap-1 text-[#c084fc] font-semibold group-hover:translate-x-0.5 transition-all">
+                      Inspect Credential <ArrowUpRight size={12} />
                     </span>
                   </div>
 

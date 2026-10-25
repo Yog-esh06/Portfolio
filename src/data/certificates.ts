@@ -70,11 +70,11 @@ export const certificatesData: CertificateItem[] = [
   },
   {
     id: "cert-industry-games",
-    title: "Top 8 Finalist — The Industry Games",
+    title: "Finalist — The Industry Games",
     issuer: "The Industry Games Hackathon",
     category: "Hackathons & Awards",
     year: "2026",
-    description: "Top 8 national finalist standing out of 300+ competitors with STRATA, an autonomous operational intelligence engine."
+    description: "National finalist standing out of 300+ competitors with STRATA, an autonomous operational intelligence engine."
   },
   {
     id: "cert-srm-research-day",

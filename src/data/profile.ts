@@ -22,7 +22,7 @@ export const profileData = {
   stats: [
     { label: "Software Projects", value: "12+" },
     { label: "Research Presented", value: "SRM '26" },
-    { label: "Hackathon Standing", value: "Top 8 / 300" },
+    { label: "Hackathon Standing", value: "Finalist" },
     { label: "Deloitte Badges", value: "6 Badges" }
   ]
 };

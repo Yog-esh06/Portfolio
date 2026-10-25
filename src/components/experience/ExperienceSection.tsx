@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { experienceData } from '../../data/experience';
+import { ExperienceItem } from '../../types';
 import { SectionHeading } from '../common/SectionHeading';
-import { Calendar, MapPin, Award } from 'lucide-react';
+import { ExperienceModal } from './ExperienceModal';
+import { Calendar, MapPin, Award, ArrowUpRight, ShieldCheck } from 'lucide-react';
 
 export const ExperienceSection: React.FC = () => {
+  const [selectedExperience, setSelectedExperience] = useState<ExperienceItem | null>(null);
+
   return (
     <section id="experience" className="py-20 lg:py-28 border-b border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,74 +19,71 @@ export const ExperienceSection: React.FC = () => {
           accent="lime"
         />
 
-        <div className="relative border-l border-white/10 ml-4 sm:ml-6 pl-6 sm:pl-10 space-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {experienceData.map((exp) => (
-            <div key={exp.id} className="relative group">
-              
-              {/* Timeline Marker Dot */}
-              <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#090b0e] border-2 border-[#d4ff33] group-hover:scale-125 transition-transform" />
-
-              {/* Card Container */}
-              <div className="rounded-3xl p-6 sm:p-8 glass-panel border border-white/10 hover:border-white/20 transition-all">
-                
-                {/* Header Information */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-                  <div>
-                    <h3 className="font-display text-2xl font-bold text-[#f8fafc]">
-                      {exp.role}
-                    </h3>
-                    <div className="font-mono text-sm text-[#d4ff33] mt-0.5 font-semibold">
-                      {exp.organization} — <span className="text-[#94a3b8] font-normal">{exp.division}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-white/50">
-                    <span className="flex items-center gap-1.5">
-                      <Calendar size={13} className="text-[#d4ff33]" />
-                      {exp.period}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <MapPin size={13} />
-                      {exp.location}
-                    </span>
+            <div 
+              key={exp.id} 
+              onClick={() => setSelectedExperience(exp)}
+              className="group cursor-pointer rounded-3xl p-6 sm:p-7 bg-[#0b0d12] border border-white/10 hover:border-[#34d399]/50 hover:bg-[#0f131a] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between shadow-lg hover:shadow-[#34d399]/10"
+            >
+              <div>
+                {/* Header Badge & Period */}
+                <div className="flex items-center justify-between gap-2 mb-4">
+                  <span className="font-mono text-xs px-3 py-1 rounded-full bg-[#34d399]/10 border border-[#34d399]/30 text-[#34d399] font-semibold group-hover:bg-[#34d399]/20 transition-colors">
+                    {exp.organization}
+                  </span>
+                  <div className="flex items-center gap-1.5 font-mono text-xs text-white/40 group-hover:text-white/60 transition-colors">
+                    <Calendar size={12} className="text-[#34d399]" />
+                    <span>{exp.period}</span>
                   </div>
                 </div>
 
-                {/* Highlights List */}
-                <ul className="space-y-3 mb-6">
-                  {exp.highlights.map((highlight, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-sm text-[#94a3b8] leading-relaxed">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#d4ff33] mt-2 flex-shrink-0" />
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Role Title with multi-color hover */}
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-[#f8fafc] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-[#34d399] group-hover:to-[#d4ff33] transition-all duration-300 mb-1">
+                  {exp.role}
+                </h3>
+                
+                <p className="font-mono text-xs text-[#94a3b8] group-hover:text-[#38bdf8] transition-colors mb-4 flex items-center gap-2">
+                  <span>{exp.division}</span>
+                  <span className="text-white/20">•</span>
+                  <span className="flex items-center gap-1 text-white/50"><MapPin size={11} /> {exp.location}</span>
+                </p>
 
-                {/* Deloitte Badges Strip */}
+                {/* Clean 1-sentence teaser */}
+                <p className="text-xs sm:text-sm text-[#94a3b8] group-hover:text-[#cbd5e1] leading-relaxed line-clamp-2 mb-5 transition-colors">
+                  {exp.highlights[0]}
+                </p>
+
+                {/* Badges preview strip */}
                 {exp.badges && exp.badges.length > 0 && (
-                  <div className="pt-4 border-t border-white/5">
-                    <span className="font-mono text-xs uppercase tracking-wider text-white/40 block mb-2.5 flex items-center gap-1.5">
-                      <Award size={13} className="text-[#d4ff33]" /> Internal Employee Skill Badges & Recognitions
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.badges.map((badge, idx) => (
-                        <span
-                          key={idx}
-                          className="font-mono text-xs px-3 py-1.5 rounded-lg bg-[#d4ff33]/5 border border-[#d4ff33]/20 text-[#d4ff33]"
-                        >
-                          {badge}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex items-center gap-2 mb-4 font-mono text-[11px] text-[#34d399]/90 group-hover:text-[#34d399]">
+                    <Award size={13} />
+                    <span>{exp.badges.length} Certified Badges & Learning Records</span>
                   </div>
                 )}
-
               </div>
+
+              {/* Action Link Footer */}
+              <div className="pt-4 border-t border-white/5 flex items-center justify-between font-mono text-xs text-white/50 group-hover:text-white transition-colors">
+                <span className="flex items-center gap-1.5 text-white/40 group-hover:text-[#34d399] transition-colors">
+                  <ShieldCheck size={13} className="text-[#34d399]" /> Verified Internship
+                </span>
+                <span className="inline-flex items-center gap-1 text-[#34d399] font-semibold group-hover:translate-x-0.5 transition-transform">
+                  View Full Details <ArrowUpRight size={13} />
+                </span>
+              </div>
+
             </div>
           ))}
         </div>
 
       </div>
+
+      {/* Experience Detail Modal */}
+      <ExperienceModal
+        experience={selectedExperience}
+        onClose={() => setSelectedExperience(null)}
+      />
     </section>
   );
 };

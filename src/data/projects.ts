@@ -8,7 +8,7 @@ export const projectsData: Project[] = [
     category: "Agentic AI",
     featured: true,
     featuredOrder: 1,
-    badge: "The Industry Games Top 8 Finalist",
+    badge: "The Industry Games Finalist",
     status: "Production Prototype",
     summary: "An autonomous operational intelligence platform that monitors enterprise business signals, detects anomalous variances with Sentinel, launches cited multi-agent root cause investigations, and gates remediations through human approval.",
     problem: "Modern business operations generate fragmented metrics across billing, supply chains, customer SLAs, and support queues. When critical variances occur, teams waste hours correlating spreadsheets without traceable evidence or audit chains.",
@@ -21,7 +21,7 @@ export const projectsData: Project[] = [
     ],
     technologies: ["FastAPI", "Python 3.12", "Next.js", "TypeScript", "Supabase Auth & RLS", "Docker", "Tailwind CSS"],
     metrics: [
-      { label: "Competition Standing", value: "Top 8 / 300+" },
+      { label: "Competition Standing", value: "Finalist / 300+" },
       { label: "Detection Engine", value: "Sub-Second" },
       { label: "Evidence Rigor", value: "100% Grounded" },
       { label: "Security", value: "Row-Level RLS" }
@@ -29,7 +29,7 @@ export const projectsData: Project[] = [
     githubUrl: "https://github.com/Yog05esh/STRATA",
     demoUrl: "https://strata-ai.me",
     highlights: [
-      "Top 8 finalist project at The Industry Games Hackathon among 300+ competitive participants.",
+      "Finalist project at The Industry Games Hackathon among 300+ competitive participants.",
       "Live interactive replay console hosted at strata-ai.me with role-based demo credentials.",
       "Dual-mode architecture: lightweight static replay adapter alongside full-stack FastAPI engine.",
       "Strict 'Evidence-or-Silence' agent design refusing hallucinations without cited data fixtures."

@@ -5,6 +5,7 @@ import { Header } from './components/layout/Header';
 import { MobileMenu } from './components/layout/MobileMenu';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/hero/Hero';
+import { SectionTabs, TabId } from './components/layout/SectionTabs';
 import { AchievementsSection } from './components/achievements/AchievementsSection';
 import { FeaturedProjects } from './components/projects/FeaturedProjects';
 import { AllProjects } from './components/projects/AllProjects';
@@ -20,6 +21,15 @@ export const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabId>('hackathons');
+
+  const handleSelectTab = (tab: TabId) => {
+    setActiveTab(tab);
+    const element = document.getElementById('sections-tabs');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="relative min-h-screen bg-[#08090b] text-[#f5f5f0] selection:bg-[#d4ff33] selection:text-[#08090b]">
@@ -28,6 +38,8 @@ export const App: React.FC = () => {
         onMobileMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
         isMobileMenuOpen={isMobileMenuOpen} 
         onOpenResume={() => setIsResumeOpen(true)}
+        activeTab={activeTab}
+        onSelectTab={handleSelectTab}
       />
 
       {/* Mobile Drawer Navigation */}
@@ -35,43 +47,64 @@ export const App: React.FC = () => {
         isOpen={isMobileMenuOpen} 
         onClose={() => setIsMobileMenuOpen(false)} 
         onOpenResume={() => setIsResumeOpen(true)}
+        activeTab={activeTab}
+        onSelectTab={handleSelectTab}
       />
 
       {/* Main Content Sections: Recruiter-First Information Architecture */}
       <main className="relative z-10">
         
-        {/* 01. Hero with Narrative, CTAs & Systems Canvas */}
-        <Hero onOpenResume={() => setIsResumeOpen(true)} />
-
-        {/* 02. Hackathon Accolades FIRST: Rehab Tech 1st & Industry Games Top 8 */}
-        <AchievementsSection />
-
-        {/* 03. Flagship Engineering Work (STRATA, Aeon, Waypoint, Quarry, RealCost) */}
-        <FeaturedProjects 
-          projects={projectsData} 
-          onSelectProject={(project) => setSelectedProject(project)} 
+        {/* 01. Hero with Narrative, CTAs & Systems Background Canvas */}
+        <Hero 
+          onOpenResume={() => setIsResumeOpen(true)} 
+          onSelectTab={(tab) => handleSelectTab(tab as TabId)}
         />
 
-        {/* 04. Repository & Systems Library (Search & Category Filter across all repos) */}
-        <AllProjects 
-          projects={projectsData} 
-          onSelectProject={(project) => setSelectedProject(project)} 
+        {/* 02. Interactive Sticky Section Tab Navigation */}
+        <SectionTabs 
+          activeTab={activeTab} 
+          onTabChange={handleSelectTab} 
         />
 
-        {/* 05. Academic & Systems Research (3 Papers: Cloud VM, SER, and Student Risk ML) */}
-        <ResearchSection />
+        {/* 03. Dynamic Active Tab View Container */}
+        <div className="relative min-h-[60vh] transition-opacity duration-300">
+          {activeTab === 'hackathons' && (
+            <AchievementsSection />
+          )}
 
-        {/* 06. Professional Experience (Deloitte Controls Assurance & SRM Research) */}
-        <ExperienceSection />
+          {activeTab === 'projects' && (
+            <>
+              <FeaturedProjects 
+                projects={projectsData} 
+                onSelectProject={(project) => setSelectedProject(project)} 
+              />
+              <AllProjects 
+                projects={projectsData} 
+                onSelectProject={(project) => setSelectedProject(project)} 
+              />
+            </>
+          )}
 
-        {/* 07. Certifications & Credentials Gallery with Detail Modal */}
-        <CertificatesSection />
+          {activeTab === 'research' && (
+            <ResearchSection />
+          )}
 
-        {/* 08. Writing & Updates: Real Dispatches From LinkedIn */}
-        <LinkedInUpdates />
+          {activeTab === 'experience' && (
+            <ExperienceSection />
+          )}
 
-        {/* 09. Technical Capabilities by Architectural Domain */}
-        <SkillsSection />
+          {activeTab === 'certificates' && (
+            <CertificatesSection />
+          )}
+
+          {activeTab === 'updates' && (
+            <LinkedInUpdates />
+          )}
+
+          {activeTab === 'skills' && (
+            <SkillsSection />
+          )}
+        </div>
 
       </main>
 

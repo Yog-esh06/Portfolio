@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
               Building Scalable Systems & Grounded Models
             </h2>
             <p className="text-base sm:text-lg text-[#94a3b8] leading-relaxed mb-8">
-              Open to technical conversations, systems engineering roles, and undergraduate research opportunities. Seeking Summer 2027 internship opportunities.
+              Open to technical conversations, systems engineering collaborations, and undergraduate research opportunities.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">

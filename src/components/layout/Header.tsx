@@ -2,27 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../common/Icons';
 import { profileData } from '../../data/profile';
+import { TabId } from './SectionTabs';
 
 interface HeaderProps {
   onMobileMenuToggle: () => void;
   isMobileMenuOpen: boolean;
   onOpenResume: () => void;
+  activeTab?: TabId;
+  onSelectTab?: (tab: TabId) => void;
 }
 
-const NAV_LINKS = [
-  { label: 'Accolades', href: '#achievements' },
-  { label: 'Projects', href: '#work' },
-  { label: 'Research', href: '#research' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Certificates', href: '#certificates' },
-  { label: 'Updates', href: '#updates' },
-  { label: 'Skills', href: '#skills' }
+interface NavLinkItem {
+  label: string;
+  tab: TabId;
+  hoverColor: string;
+}
+
+const NAV_LINKS: NavLinkItem[] = [
+  { label: 'Accolades', tab: 'hackathons', hoverColor: 'hover:text-[#ff7849]' },
+  { label: 'Projects', tab: 'projects', hoverColor: 'hover:text-[#d4ff33]' },
+  { label: 'Research', tab: 'research', hoverColor: 'hover:text-[#38bdf8]' },
+  { label: 'Experience', tab: 'experience', hoverColor: 'hover:text-[#34d399]' },
+  { label: 'Certificates', tab: 'certificates', hoverColor: 'hover:text-[#c084fc]' },
+  { label: 'Updates', tab: 'updates', hoverColor: 'hover:text-[#60a5fa]' },
+  { label: 'Skills', tab: 'skills', hoverColor: 'hover:text-[#f472b6]' }
 ];
 
 export const Header: React.FC<HeaderProps> = ({ 
   onMobileMenuToggle, 
   isMobileMenuOpen,
-  onOpenResume 
+  onOpenResume,
+  activeTab,
+  onSelectTab
 }) => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -33,6 +44,17 @@ export const Header: React.FC<HeaderProps> = ({
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (tab: TabId, e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onSelectTab) {
+      onSelectTab(tab);
+    }
+    const element = document.getElementById('sections-tabs');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header 
@@ -65,22 +87,29 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/10 p-1.5 rounded-2xl backdrop-blur-md">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="px-3.5 py-1.5 rounded-xl font-mono text-xs text-[#94a3b8] hover:text-[#f5f5f0] hover:bg-white/5 transition-all"
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = activeTab === link.tab;
+            return (
+              <button
+                key={link.tab}
+                onClick={(e) => handleNavClick(link.tab, e)}
+                className={`px-3.5 py-1.5 rounded-xl font-mono text-xs transition-all ${
+                  isActive
+                    ? 'bg-white/10 text-white font-bold shadow-sm'
+                    : `text-[#94a3b8] ${link.hoverColor} hover:bg-white/5`
+                }`}
+              >
+                {link.label}
+              </button>
+            );
+          })}
         </nav>
 
         {/* Actions Strip */}
         <div className="hidden sm:flex items-center gap-2.5">
           <button
             onClick={onOpenResume}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-mono text-xs font-semibold border border-white/10 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-white font-mono text-xs font-semibold border border-white/10 hover:border-[#d4ff33]/40 hover:text-[#d4ff33] transition-all"
           >
             <FileText size={13} className="text-[#d4ff33]" />
             <span>Resume</span>
@@ -101,27 +130,29 @@ export const Header: React.FC<HeaderProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
-            className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-[#38bdf8] border border-white/10 transition-colors"
+            className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-[#38bdf8] hover:text-[#60a5fa] border border-[#38bdf8]/20 transition-colors"
           >
             <LinkedinIcon size={16} />
           </a>
-
-          <a
-            href="#contact"
-            className="px-4 py-2 rounded-xl bg-[#d4ff33] text-[#08090b] font-mono text-xs font-bold hover:bg-[#bce628] transition-colors"
-          >
-            Contact
-          </a>
         </div>
 
-        {/* Mobile Hamburger Toggle */}
-        <button
-          onClick={onMobileMenuToggle}
-          aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
-          className="lg:hidden p-2 rounded-xl bg-white/5 text-white/80 hover:text-white border border-white/10 transition-colors"
-        >
-          {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        {/* Mobile Menu Hamburger */}
+        <div className="flex sm:hidden items-center gap-2">
+          <button
+            onClick={onOpenResume}
+            aria-label="Open Resume"
+            className="p-2 rounded-xl bg-white/5 text-[#d4ff33] border border-white/10"
+          >
+            <FileText size={16} />
+          </button>
+          <button
+            onClick={onMobileMenuToggle}
+            aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
+            className="p-2 rounded-xl bg-white/5 text-white/80 hover:text-white border border-white/10"
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
 
       </div>
     </header>

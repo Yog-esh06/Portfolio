@@ -3,7 +3,7 @@ import { Project } from '../../types';
 import { SectionHeading } from '../common/SectionHeading';
 import { Badge } from '../common/Badge';
 import { GithubIcon } from '../common/Icons';
-import { ArrowUpRight, Activity, ArrowRight } from 'lucide-react';
+import { ExternalLink, Layers, ArrowRight } from 'lucide-react';
 
 interface FeaturedProjectsProps {
   projects: Project[];
@@ -11,170 +11,134 @@ interface FeaturedProjectsProps {
 }
 
 export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects, onSelectProject }) => {
-  const featured = projects.filter((p) => p.featured).sort((a, b) => (a.featuredOrder || 0) - (b.featuredOrder || 0));
+  const featured = projects.filter((p) => p.featured).sort((a, b) => (a.featuredOrder || 99) - (b.featuredOrder || 99));
 
   return (
-    <section id="work" className="py-20 lg:py-28 border-b border-white/[0.06]">
+    <section id="work" className="py-16 sm:py-20 border-b border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SectionHeading
-          number="// 01. FLAGSHIP SYSTEMS"
-          title="Engineered for Production & Research"
-          subtitle="Real software architectures: multi-agent swarms, operations research solvers, causal counterfactuals, and telemetry benchmarks."
+          number="// 02. FLAGSHIP SYSTEMS"
+          title="Featured Engineering Projects"
+          subtitle="Production-grade distributed engines, reinforcement learning solvers, and operations research systems."
           accent="lime"
         />
 
-        {/* Featured Projects Stack */}
-        <div className="space-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featured.map((project, index) => {
             const isStrata = project.id === 'strata';
+            const isAeon = project.id === 'aeon';
 
             return (
               <div
                 key={project.id}
-                className={`group relative rounded-3xl overflow-hidden glass-panel border transition-all duration-300 ${
+                onClick={() => onSelectProject(project)}
+                className={`group cursor-pointer flex flex-col justify-between rounded-3xl p-6 sm:p-7 glass-panel border transition-all duration-300 hover:-translate-y-1.5 ${
                   isStrata 
-                    ? 'border-[#c8f135]/40 bg-gradient-to-b from-[#0f1319] via-[#0f1319] to-[#141d14]/40 hover:border-[#c8f135]' 
-                    : 'border-white/10 hover:border-white/20'
+                    ? 'border-[#ff7849]/30 hover:border-[#ff7849] hover:shadow-xl hover:shadow-[#ff7849]/10' 
+                    : isAeon 
+                    ? 'border-[#d4ff33]/30 hover:border-[#d4ff33] hover:shadow-xl hover:shadow-[#d4ff33]/10'
+                    : 'border-white/10 hover:border-[#38bdf8]/50 hover:shadow-xl hover:shadow-[#38bdf8]/10'
                 }`}
               >
-                <div className="p-6 sm:p-8 lg:p-10">
-                  
-                  {/* Top Bar: Category, Status, Accolades */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-mono text-xs text-white/40 font-medium">
+                <div>
+                  {/* Thumbnail Header: Index & Badge */}
+                  <div className="flex items-center justify-between gap-2 mb-3.5">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs text-white/40 font-semibold">
                         #{String(index + 1).padStart(2, '0')}
                       </span>
-                      <Badge variant="lime">{project.category}</Badge>
-                      {project.badge && (
-                        <Badge variant="orange" icon={<Activity size={12} />}>
-                          {project.badge}
-                        </Badge>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-2 font-mono text-xs text-white/50">
-                      <Activity size={14} className="text-[#c8f135]" />
-                      <span>{project.status}</span>
-                    </div>
-                  </div>
-
-                  {/* Title & Tagline */}
-                  <div className="max-w-3xl mb-6">
-                    <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#f8fafc] group-hover:text-[#c8f135] transition-colors mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="font-mono text-sm sm:text-base text-[#38bdf8] leading-relaxed">
-                      {project.tagline}
-                    </p>
-                  </div>
-
-                  {/* Summary & Problem Framing */}
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8 items-start">
-                    <div className="lg:col-span-7 space-y-4 text-sm text-[#94a3b8] leading-relaxed">
-                      <p>{project.summary}</p>
-                      <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                        <span className="font-mono text-xs uppercase tracking-wider text-[#cbd5e1] font-semibold block mb-1">
-                          Core Problem Solved
-                        </span>
-                        <p className="text-xs text-[#94a3b8] leading-relaxed">
-                          {project.problem}
-                        </p>
-                      </div>
+                      <Badge variant={isStrata ? 'orange' : isAeon ? 'lime' : 'cyan'}>
+                        {project.category}
+                      </Badge>
                     </div>
 
-                    {/* Architecture Steps preview */}
-                    <div className="lg:col-span-5 space-y-2">
-                      <span className="font-mono text-xs uppercase tracking-wider text-white/40 block mb-2">
-                        System Pipeline
+                    {project.badge && (
+                      <span className="font-mono text-[10px] text-white/60 border border-white/10 px-2 py-0.5 rounded-full">
+                        {project.badge}
                       </span>
-                      {project.architecture.map((step, idx) => (
-                        <div key={idx} className="p-3 rounded-lg bg-white/[0.02] border border-white/5 flex items-start justify-between gap-3">
-                          <div>
-                            <span className="font-mono text-xs text-[#f8fafc] font-medium block">
-                              {step.name}
-                            </span>
-                            <span className="text-[11px] text-[#94a3b8] leading-tight block mt-0.5">
-                              {step.detail}
-                            </span>
-                          </div>
-                          <span className="font-mono text-[10px] text-[#c8f135] uppercase px-1.5 py-0.5 rounded bg-[#c8f135]/10 whitespace-nowrap">
-                            {step.role}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                    )}
                   </div>
 
-                  {/* Metrics Row (if available) */}
-                  {project.metrics && (
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 pt-4 border-t border-white/5">
-                      {project.metrics.map((m, idx) => (
-                        <div key={idx} className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
-                          <div className="font-mono text-[11px] text-[#94a3b8] mb-0.5">{m.label}</div>
-                          <div className="font-display text-base sm:text-lg font-bold text-[#f8fafc]">{m.value}</div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  {/* Title with dynamic multi-color gradient on hover */}
+                  <h3 className="font-display text-2xl font-bold text-[#f8fafc] group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#d4ff33] group-hover:via-[#38bdf8] group-hover:to-[#ff7849] transition-all duration-300 mb-2 leading-tight">
+                    {project.title}
+                  </h3>
 
-                  {/* Bottom Bar: Technologies & CTA Buttons */}
-                  <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/[0.08]">
-                    
-                    {/* Tech Badges */}
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      {project.technologies.slice(0, 5).map((tech) => (
-                        <span key={tech} className="font-mono text-[11px] px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white/70">
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 5 && (
-                        <span className="font-mono text-[11px] px-2 py-1 text-white/40">
-                          +{project.technologies.length - 5} more
-                        </span>
-                      )}
-                    </div>
+                  {/* Tagline */}
+                  <p className="font-mono text-xs text-[#38bdf8] group-hover:text-[#60a5fa] leading-relaxed mb-3 line-clamp-2 transition-colors">
+                    {project.tagline}
+                  </p>
 
-                    {/* Action Links */}
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      
-                      <button
-                        onClick={() => onSelectProject(project)}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-[#f8fafc] font-mono text-xs font-medium border border-white/10 transition-colors"
+                  {/* Minimal Thumbnail Summary */}
+                  <p className="text-xs sm:text-sm text-[#94a3b8] group-hover:text-[#cbd5e1] line-clamp-3 leading-relaxed mb-5 transition-colors">
+                    {project.summary}
+                  </p>
+
+                  {/* Core Architecture Highlight Chip */}
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-5 flex items-center justify-between gap-2 text-xs font-mono">
+                    <span className="text-white/40 flex items-center gap-1.5">
+                      <Layers size={13} className="text-[#d4ff33]" /> Architecture
+                    </span>
+                    <span className="text-white/80 font-medium truncate">
+                      {project.architecture[0]?.name || 'Pipeline'}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Thumbnail Bottom: Technologies & Action Links */}
+                <div>
+                  <div className="flex flex-wrap gap-1.5 mb-4 pt-3 border-t border-white/5">
+                    {project.technologies.slice(0, 3).map((tech) => (
+                      <span
+                        key={tech}
+                        className="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white/70 group-hover:border-[#d4ff33]/30 group-hover:text-white transition-colors"
                       >
-                        <span>Deep Dive Architecture</span>
-                        <ArrowRight size={13} />
-                      </button>
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 3 && (
+                      <span className="font-mono text-[10px] px-1.5 py-0.5 text-white/40">
+                        +{project.technologies.length - 3}
+                      </span>
+                    )}
+                  </div>
 
+                  <div className="flex items-center justify-between gap-2 pt-2">
+                    <span className="inline-flex items-center gap-1 font-mono text-xs font-semibold text-[#d4ff33] group-hover:underline">
+                      <span>Full Deep Dive</span>
+                      <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+
+                    <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
                       {project.demoUrl && (
                         <a
                           href={project.demoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#c8f135] text-[#090b0e] font-mono text-xs font-bold hover:bg-[#d6f658] transition-colors"
+                          aria-label={`Open ${project.title} live demo`}
+                          className="p-2 rounded-xl bg-white/5 hover:bg-[#d4ff33] hover:text-[#08090b] text-white/70 transition-colors"
+                          title="Live Demo"
                         >
-                          <span>Live Replay</span>
-                          <ArrowUpRight size={14} />
+                          <ExternalLink size={13} />
                         </a>
                       )}
-
                       {project.githubUrl && (
                         <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`View ${project.title} on GitHub`}
-                          className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/10 transition-colors"
+                          aria-label={`Open ${project.title} source code`}
+                          className="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-white/70 hover:text-white transition-colors"
+                          title="GitHub Repository"
                         >
-                          <GithubIcon size={16} />
+                          <GithubIcon size={14} />
                         </a>
                       )}
-
                     </div>
-
                   </div>
-
                 </div>
+
               </div>
             );
           })}
@@ -184,4 +148,3 @@ export const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects, on
     </section>
   );
 };
-
