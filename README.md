@@ -1,6 +1,6 @@
 # Yogesh R. Mehta — Interactive Engineering & Research Portfolio
 
-[![Live Portfolio](https://img.shields.io/badge/Live%20Site-yog--esh06.github.io%2FPortofolio-d4ff33?style=for-the-badge&logo=githubpages&logoColor=black)](https://yog-esh06.github.io/Portofolio/)
+[![Live Portfolio](https://img.shields.io/badge/Live%20Site-yog--esh06.github.io%2FPortofolio-d4ff33?style=for-the-badge&logo=githubpages&logoColor=black)](https://yog-esh06.github.io/Portfolio/)
 [![GitHub](https://img.shields.io/badge/GitHub-Yog--esh06-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Yog-esh06/Portofolio)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-yog--esh06-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yog-esh06/)
 
