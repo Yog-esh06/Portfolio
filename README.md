@@ -8,7 +8,7 @@ A high-signal, interactive developer and systems engineering portfolio built wit
 
 Designed specifically for technical recruiters, engineering hiring managers, and internship evaluation committees to explore real software systems, distributed architectures, operations research solvers, multi-agent swarms, empirical academic research, and industry experience with zero marketing fluff.
 
-🔗 **Live Website:** [https://yog-esh06.github.io/Portofolio/](https://yog-esh06.github.io/Portofolio/)
+🔗 **Live Website:** [https://yog-esh06.github.io/Portofolio/](https://yog-esh06.github.io/Portfolio/)
 
 ---
 
